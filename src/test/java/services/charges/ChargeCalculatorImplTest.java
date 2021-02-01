@@ -79,5 +79,16 @@ public class ChargeCalculatorImplTest {
         assertTrue(chargedTrips.get(2).getChargeAmount().compareTo(new BigDecimal("7.30")) == 0);
     }
 
+    @Test
+    public void testMaxCostForIncompleteTrips() {
+        BigDecimal stop1Cost = chargeCalculator.calculateMaxChargeForStop("Stop1");
+        BigDecimal stop2Cost = chargeCalculator.calculateMaxChargeForStop("Stop2");
+        BigDecimal stop3Cost = chargeCalculator.calculateMaxChargeForStop("Stop3");
+
+        assertTrue(stop1Cost.compareTo(new BigDecimal("7.30")) == 0);
+        assertTrue(stop2Cost.compareTo(new BigDecimal("5.50")) == 0);
+        assertTrue(stop3Cost.compareTo(new BigDecimal("7.30")) == 0);
+    }
+
 
 }

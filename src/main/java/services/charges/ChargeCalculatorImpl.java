@@ -5,6 +5,7 @@ import model.Trip;
 
 import java.math.BigDecimal;
 import java.util.ArrayList;
+import java.util.Comparator;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -33,6 +34,14 @@ public class ChargeCalculatorImpl implements ChargeCalculator {
         tripCost = chargeConfiguration.getCost();
 
         return tripCost;
+    }
+
+    @Override
+    public BigDecimal calculateMaxChargeForStop(String stopId) {
+        BigDecimal maxCost = chargeConfigurations.stream().filter(c -> c.getStop1().equals(stopId) ||
+                c.getStop2().equals(stopId)).max(Comparator.comparing(ChargeConfiguration::getCost)).get().getCost();
+
+        return maxCost;
     }
 
     @Override
