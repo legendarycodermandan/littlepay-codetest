@@ -4,6 +4,8 @@ import model.Tap;
 import model.Trip;
 import model.TripStatus;
 import org.junit.jupiter.api.Test;
+import services.charges.ChargeCalculator;
+import services.charges.ChargeCalculatorImpl;
 
 import java.nio.file.Path;
 import java.nio.file.Paths;
@@ -89,6 +91,32 @@ public class TapMatcherImplTest {
         assertEquals("Bus37", theTrip.getBusId());
         assertEquals("5500005555555559", theTrip.getPan());
         assertEquals(TripStatus.INCOMPLETE, theTrip.getStatus());
+    }
+
+    @Test
+    public void testMatcherCombined() {
+        ChargeCalculator chargeCalculator = new ChargeCalculatorImpl();
+        Path resourceDirectory = Paths.get("src", "test", "resources", "input", "tripsForAllCases.csv");
+        String absolutePath = resourceDirectory.toFile().getAbsolutePath();
+
+        List<Tap> taps = csvReader.getTaps(absolutePath);
+
+        List<Trip> trips = tapMatcher.matchTaps(taps);
+        List<Trip> chargedTrips = chargeCalculator.calculateCharge(trips);
+        System.out.println("*************************************************");
+        trips.forEach(t -> System.out.println(t));
+//        System.out.println(chargedTrips);
+        System.out.println("*************************************************");
+
+        assertEquals(5, trips.size());
+
+        Long completedTripCount = trips.stream().filter(t -> t.getStatus() == TripStatus.COMPLETED).count();
+        Long inCompleteTripCount = trips.stream().filter(t -> t.getStatus() == TripStatus.INCOMPLETE).count();
+        Long cancelledTripCount = trips.stream().filter(t -> t.getStatus() == TripStatus.CANCELLED).count();
+
+        assertEquals(3, completedTripCount);
+        assertEquals(1, inCompleteTripCount);
+        assertEquals(1, cancelledTripCount);
     }
 
 }

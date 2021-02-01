@@ -94,4 +94,20 @@ public class Trip {
     public void setStatus(TripStatus status) {
         this.status = status;
     }
+
+    @Override
+    public String toString() {
+        return "Trip{" +
+                "started=" + started +
+                ", finished=" + finished +
+                ", durationSecs=" + durationSecs +
+                ", fromStopId='" + fromStopId + '\'' +
+                ", toStopId='" + toStopId + '\'' +
+                ", chargeAmount=" + chargeAmount +
+                ", companyId='" + companyId + '\'' +
+                ", busId='" + busId + '\'' +
+                ", pan='" + pan + '\'' +
+                ", status=" + status +
+                '}';
+    }
 }

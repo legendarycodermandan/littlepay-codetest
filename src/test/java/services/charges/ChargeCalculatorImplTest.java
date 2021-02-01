@@ -91,4 +91,6 @@ public class ChargeCalculatorImplTest {
         assertTrue(stop2Cost.compareTo(new BigDecimal("5.50")) == 0);
         assertTrue(stop3Cost.compareTo(new BigDecimal("7.30")) == 0);
     }
+
+
 }
