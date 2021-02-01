@@ -12,7 +12,6 @@ public class TapMatcherImpl implements TapMatcher {
     @Override
     public List<Trip> matchTaps(List<Tap> taps) {
         long diff;
-
         Tap theTapOn = null;
         Trip trip = null;
         List<Trip> trips = new ArrayList<>();

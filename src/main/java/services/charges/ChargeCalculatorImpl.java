@@ -6,6 +6,7 @@ import model.Trip;
 import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.Collectors;
 
 public class ChargeCalculatorImpl implements ChargeCalculator {
 
@@ -32,5 +33,17 @@ public class ChargeCalculatorImpl implements ChargeCalculator {
         tripCost = chargeConfiguration.getCost();
 
         return tripCost;
+    }
+
+    @Override
+    public List<Trip> calculateCharge(List<Trip> trips) {
+        List<Trip> clone = trips.stream().collect(Collectors.toList());
+        Trip trip = null;
+        for (int i = 0; i < trips.size(); i++) {
+            trip = trips.get(i);
+            trip.setChargeAmount(calculateCharge(trip));
+        }
+
+        return clone;
     }
 }
