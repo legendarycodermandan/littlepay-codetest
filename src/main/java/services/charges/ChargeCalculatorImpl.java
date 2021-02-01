@@ -51,13 +51,13 @@ public class ChargeCalculatorImpl implements ChargeCalculator {
         for (int i = 0; i < trips.size(); i++) {
             trip = trips.get(i);
             switch (trip.getStatus()) {
-                case "COMPLETE":
+                case COMPLETED:
                     trip.setChargeAmount(calculateCharge(trip));
                     break;
-                case "INCOMPLETE":
+                case INCOMPLETE:
                     trip.setChargeAmount(calculateMaxChargeForStop(trip.getFromStopId()));
                     break;
-                case "CANCELLED":
+                case CANCELLED:
                     trip.setChargeAmount(new BigDecimal("0"));
                     break;
             }

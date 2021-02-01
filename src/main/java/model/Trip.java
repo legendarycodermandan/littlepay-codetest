@@ -13,7 +13,7 @@ public class Trip {
     private String companyId;
     private String busId;
     private String pan;
-    private String status;
+    private TripStatus status;
 
     public Date getStarted() {
         return started;
@@ -87,11 +87,11 @@ public class Trip {
         this.busId = busId;
     }
 
-    public String getStatus() {
+    public TripStatus getStatus() {
         return status;
     }
 
-    public void setStatus(String status) {
+    public void setStatus(TripStatus status) {
         this.status = status;
     }
 }

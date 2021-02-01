@@ -2,6 +2,7 @@ package services;
 
 import model.Tap;
 import model.Trip;
+import model.TripStatus;
 
 import java.time.temporal.ChronoUnit;
 import java.util.ArrayList;
@@ -32,7 +33,7 @@ public class TapMatcherImpl implements TapMatcher {
                 trip.setCompanyId(theTapOn.getCompanyId());
                 trip.setBusId(theTapOn.getBusId());
                 trip.setPan(theTapOn.getPan());
-                trip.setStatus(theTapOff.getStopId().equals(theTapOn.getStopId()) ? "CANCELLED" : "COMPLETED");
+                trip.setStatus(theTapOff.getStopId().equals(theTapOn.getStopId()) ? TripStatus.CANCELLED : TripStatus.COMPLETED);
 
                 trips.add(trip);
 
@@ -57,7 +58,7 @@ public class TapMatcherImpl implements TapMatcher {
             trip.setCompanyId(tap.getCompanyId());
             trip.setBusId(tap.getBusId());
             trip.setPan(tap.getPan());
-            trip.setStatus("INCOMPLETE");
+            trip.setStatus(TripStatus.INCOMPLETE);
 
             trips.add(trip);
         }

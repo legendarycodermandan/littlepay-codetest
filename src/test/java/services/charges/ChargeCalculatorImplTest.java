@@ -1,6 +1,7 @@
 package services.charges;
 
 import model.Trip;
+import model.TripStatus;
 import org.junit.jupiter.api.Test;
 
 import java.math.BigDecimal;
@@ -57,17 +58,17 @@ public class ChargeCalculatorImplTest {
         Trip trip1 = new Trip();
         trip1.setFromStopId("Stop1");
         trip1.setToStopId("Stop2");
-        trip1.setStatus("COMPLETE");
+        trip1.setStatus(TripStatus.COMPLETED);
 
         Trip trip2 = new Trip();
         trip2.setFromStopId("Stop2");
         trip2.setToStopId("Stop3");
-        trip2.setStatus("COMPLETE");
+        trip2.setStatus(TripStatus.COMPLETED);
 
         Trip trip3 = new Trip();
         trip3.setFromStopId("Stop1");
         trip3.setToStopId("Stop3");
-        trip3.setStatus("COMPLETE");
+        trip3.setStatus(TripStatus.COMPLETED);
 
         trips.add(trip1);
         trips.add(trip2);

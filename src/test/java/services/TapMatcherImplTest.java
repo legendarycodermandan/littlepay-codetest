@@ -2,6 +2,7 @@ package services;
 
 import model.Tap;
 import model.Trip;
+import model.TripStatus;
 import org.junit.jupiter.api.Test;
 
 import java.nio.file.Path;
@@ -37,7 +38,7 @@ public class TapMatcherImplTest {
         assertEquals("Company1", theTrip.getCompanyId());
         assertEquals("Bus37", theTrip.getBusId());
         assertEquals("5500005555555559", theTrip.getPan());
-        assertEquals("COMPLETED", theTrip.getStatus());
+        assertEquals(TripStatus.COMPLETED, theTrip.getStatus());
 
 
     }
@@ -62,7 +63,7 @@ public class TapMatcherImplTest {
         assertEquals("Company1", theTrip.getCompanyId());
         assertEquals("Bus37", theTrip.getBusId());
         assertEquals("5500005555555559", theTrip.getPan());
-        assertEquals("CANCELLED", theTrip.getStatus());
+        assertEquals(TripStatus.CANCELLED, theTrip.getStatus());
 
 
     }
@@ -87,7 +88,7 @@ public class TapMatcherImplTest {
         assertEquals("Company1", theTrip.getCompanyId());
         assertEquals("Bus37", theTrip.getBusId());
         assertEquals("5500005555555559", theTrip.getPan());
-        assertEquals("INCOMPLETE", theTrip.getStatus());
+        assertEquals(TripStatus.INCOMPLETE, theTrip.getStatus());
     }
 
 }
