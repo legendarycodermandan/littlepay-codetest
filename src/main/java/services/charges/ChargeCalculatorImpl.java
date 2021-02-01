@@ -46,13 +46,24 @@ public class ChargeCalculatorImpl implements ChargeCalculator {
 
     @Override
     public List<Trip> calculateCharge(List<Trip> trips) {
-        List<Trip> clone = trips.stream().collect(Collectors.toList());
+        List<Trip> clonedTrips = trips.stream().collect(Collectors.toList());
         Trip trip = null;
         for (int i = 0; i < trips.size(); i++) {
             trip = trips.get(i);
-            trip.setChargeAmount(calculateCharge(trip));
+            switch (trip.getStatus()) {
+                case "COMPLETE":
+                    trip.setChargeAmount(calculateCharge(trip));
+                    break;
+                case "INCOMPLETE":
+                    trip.setChargeAmount(calculateMaxChargeForStop(trip.getFromStopId()));
+                    break;
+                case "CANCELLED":
+                    trip.setChargeAmount(new BigDecimal("0"));
+                    break;
+            }
+
         }
 
-        return clone;
+        return clonedTrips;
     }
 }

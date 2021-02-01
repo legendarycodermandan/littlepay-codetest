@@ -31,7 +31,6 @@ public class ChargeCalculatorImplTest {
 
     @Test
     public void testSomething() {
-
         Trip trip = new Trip();
         trip.setFromStopId("Stop1");
         trip.setToStopId("Stop2");
@@ -50,7 +49,6 @@ public class ChargeCalculatorImplTest {
         tripCost = chargeCalculator.calculateCharge(trip);
 
         assertTrue(tripCost.compareTo(new BigDecimal("7.30")) == 0, tripCost.toPlainString());
-
     }
 
     @Test
@@ -59,14 +57,17 @@ public class ChargeCalculatorImplTest {
         Trip trip1 = new Trip();
         trip1.setFromStopId("Stop1");
         trip1.setToStopId("Stop2");
+        trip1.setStatus("COMPLETE");
 
         Trip trip2 = new Trip();
         trip2.setFromStopId("Stop2");
         trip2.setToStopId("Stop3");
+        trip2.setStatus("COMPLETE");
 
         Trip trip3 = new Trip();
         trip3.setFromStopId("Stop1");
         trip3.setToStopId("Stop3");
+        trip3.setStatus("COMPLETE");
 
         trips.add(trip1);
         trips.add(trip2);
@@ -89,6 +90,4 @@ public class ChargeCalculatorImplTest {
         assertTrue(stop2Cost.compareTo(new BigDecimal("5.50")) == 0);
         assertTrue(stop3Cost.compareTo(new BigDecimal("7.30")) == 0);
     }
-
-
 }
