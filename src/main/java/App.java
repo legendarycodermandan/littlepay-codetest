@@ -31,8 +31,8 @@ public class App {
             System.exit(1);
         }
 
-
-//        String targetArg = "/home/danny/DEL/t.csv";
+        System.out.println("Using source file: " + sourceArg);
+        System.out.println("Output will be written to: " + targetArg);
 
         InputReader csvReader = new InputReaderImpl();
         TapMatcher tapMatcher = new TapMatcherImpl();
@@ -44,6 +44,7 @@ public class App {
         List<Trip> chargedTrips = chargeCalculator.calculateCharge(trips);
 
         System.out.println("*************************************************");
+        System.out.println("Trips to be written to file:");
         chargedTrips.forEach(t -> System.out.println(t));
         System.out.println("*************************************************");
 
@@ -58,10 +59,6 @@ public class App {
 
     private static boolean isDestinationValid(String destination) {
         Path path = Paths.get(destination);
-        System.out.println("******************************");
-        System.out.println("path.getParent(): " + path.getParent());
-        System.out.println("******************************");
-
         return Files.exists(path.getParent()) ? true : false;
     }
 }
