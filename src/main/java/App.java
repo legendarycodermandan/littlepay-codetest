@@ -14,7 +14,7 @@ public class App {
     public static void main(String[] args) {
 
         if (args.length < 2) {
-            System.out.println("The source file for taps and an output destination is required");
+            System.out.println("The source file for taps and an output destination for trips is required");
             System.exit(1);
         }
 
