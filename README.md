@@ -9,11 +9,11 @@
 
 ```
 
-##Background
+## Background
 This application was written using java 14 and Maven 3.6.3 as the package manager.  Junit 5  was used as the testing framework.
 A command line application is generated to run the app.
 
-##Usage
+## Usage
 Unit tests can be run with the following command from within the root folder:
 ```
 mvn clean test
@@ -31,7 +31,7 @@ For example, to run the application with the source file at "/home/danny/DEL/inp
 java -jar littlepay-codetest-1.0-SNAPSHOT-jar-with-dependencies.jar /home/danny/DEL/input.csv /home/danny/DEL/output.csv
 ```
 
-##A self review and some comments on my code
+## A self review and some comments on my code
 
 ```
 Perhaps could have included a Maven Wrapper
