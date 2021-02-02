@@ -6,6 +6,10 @@ import model.TripStatus;
 import org.junit.jupiter.api.Test;
 import services.charges.ChargeCalculator;
 import services.charges.ChargeCalculatorImpl;
+import services.input.InputReader;
+import services.input.InputReaderImpl;
+import services.matching.TapMatcher;
+import services.matching.TapMatcherImpl;
 
 import java.nio.file.Path;
 import java.nio.file.Paths;
@@ -36,7 +40,6 @@ public class TapMatcherImplTest {
         assertEquals(300, theTrip.getDurationSecs());
         assertEquals("Stop1", theTrip.getFromStopId());
         assertEquals("Stop2", theTrip.getToStopId());
-//        assertEquals("", theTrip.getChargeAmount());
         assertEquals("Company1", theTrip.getCompanyId());
         assertEquals("Bus37", theTrip.getBusId());
         assertEquals("5500005555555559", theTrip.getPan());
@@ -61,7 +64,6 @@ public class TapMatcherImplTest {
         assertEquals(60, theTrip.getDurationSecs());
         assertEquals("Stop2", theTrip.getFromStopId());
         assertEquals("Stop2", theTrip.getToStopId());
-//        assertEquals("", theTrip.getChargeAmount());
         assertEquals("Company1", theTrip.getCompanyId());
         assertEquals("Bus37", theTrip.getBusId());
         assertEquals("5500005555555559", theTrip.getPan());
@@ -86,7 +88,6 @@ public class TapMatcherImplTest {
         assertNull(theTrip.getDurationSecs());
         assertEquals("Stop1", theTrip.getFromStopId());
         assertNull(theTrip.getToStopId());
-//        assertEquals("", theTrip.getChargeAmount());
         assertEquals("Company1", theTrip.getCompanyId());
         assertEquals("Bus37", theTrip.getBusId());
         assertEquals("5500005555555559", theTrip.getPan());
@@ -103,10 +104,6 @@ public class TapMatcherImplTest {
 
         List<Trip> trips = tapMatcher.matchTaps(taps);
         List<Trip> chargedTrips = chargeCalculator.calculateCharge(trips);
-        System.out.println("*************************************************");
-        trips.forEach(t -> System.out.println(t));
-//        System.out.println(chargedTrips);
-        System.out.println("*************************************************");
 
         assertEquals(5, trips.size());
 

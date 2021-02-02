@@ -1,8 +1,13 @@
 import model.Tap;
 import model.Trip;
-import services.*;
 import services.charges.ChargeCalculator;
 import services.charges.ChargeCalculatorImpl;
+import services.input.InputReader;
+import services.input.InputReaderImpl;
+import services.matching.TapMatcher;
+import services.matching.TapMatcherImpl;
+import services.output.OutputWriter;
+import services.output.OutputWriterImpl;
 
 import java.nio.file.Files;
 import java.nio.file.Path;

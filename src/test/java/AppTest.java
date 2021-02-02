@@ -1,7 +1,7 @@
 import model.Tap;
 import org.junit.jupiter.api.Test;
-import services.InputReader;
-import services.InputReaderImpl;
+import services.input.InputReader;
+import services.input.InputReaderImpl;
 
 import java.nio.file.Path;
 import java.nio.file.Paths;

@@ -1,14 +1,5 @@
 # Littlepay Code Test - Danny Reiner
 
-## Assumptions
-
-```
-*Input file does not contain commas in the field data
-*Taps are in order
-*The companyId is the same for tap on and tap off
-
-```
-
 ## Background
 This application was written using java 14 and Maven 3.6.3 as the package manager.  Junit 5  was used as the testing framework.
 A command line application is generated to run the app.
@@ -31,14 +22,25 @@ For example, to run the application with the source file at "/home/danny/DEL/inp
 java -jar littlepay-codetest-1.0-SNAPSHOT-jar-with-dependencies.jar /home/danny/DEL/input.csv /home/danny/DEL/output.csv
 ```
 
-## A self review and some comments on my code
+## Assumptions
+
+```
+*Input file does not contain commas in the field data
+*Taps are in order
+*The companyId is the same for tap on and tap off
+*Cost of trips did not need to be configurable
+```
+
+## A self review and some comments on my code which might be improved with a bit more time
 
 ```
 Perhaps could have included a Maven Wrapper
 some magic strings
-not DRY
+Not DRY
 Perhaps could have used an OO design along the lines of Complete/Incomplete/Cancelled trips being subclasses of an abstract "Trip" class and overriding a method to calculate it's own concrete type of trip.
 Could have used a logging library rather than SysOuts
 Could have refactored the input reader to use opencsv (as I used for the output writer)
 Better exception handling
+Headings in output file
+Perhaps should have calculated the cost of a trip as the trip was matched, rather than a seperate operation to iterate through the list and apply charges as a batch.
 ```

@@ -1,4 +1,4 @@
-package services;
+package services.matching;
 
 import model.Tap;
 import model.Trip;
